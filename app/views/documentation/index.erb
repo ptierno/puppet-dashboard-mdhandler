@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html id="docs">
+<head>
+  <title>Documentation</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/documentation.css" />
+</head>
+<body id="docs">
+  <div id="doc-wrapper">
+
+    <div id="doc-header">
+      <h1>LOGO</h1>
+    </div>
+    <div id="doc-navigation">
+      <a href='/'>Link</a>
+      <a href='/link' target='_blank'>Another Link</a>
+    </div>
+    <div id="doc-content-wrapper">
+      <div id="doc-content">
+
+        <%= @content %>
+
+      </div>
+    </div>
+
+    <div id="doc-leftcolumn">
+      <a href="/documentation">Home</a>
+      <% for sub in @uri %>
+
+        <% if sub !~ /documentation/ %>
+          &raquo;&nbsp;<a href="<%= @path %>"><%= sub %></a>
+        <% end %>
+      <% end %>
+
+      <ul>
+        <% for dir in @subs[:dirs] %>
+        <li class="folder">
+          <a href="<%= "#{@path}/#{dir}" %>"><%= dir %></a>
+        </li>
+        <% end %>
+
+        <% for file in @subs[:files] %>
+          <% classes = '' %>
+          <% if @file == file %>
+            <% classes = "current" %>
+          <% end %>
+
+          <li class="page <%= classes %>">
+            <a href="<%= "#{@path}/#{file}" %>"><%= File.basename(file, ".*") %></a>
+          </li>
+        <% end %>
+
+      </ul>
+
+    </div>
+  </div>
+
+</body>
+</html>
