@@ -8,11 +8,14 @@
   <div id="doc-wrapper">
 
     <div id="doc-header">
-      <h1>LOGO</h1>
+      <a href="<%= SETTINGS.logo_path %>" target="_blank"><img src="<%= SETTINGS.logo_image %>" alt="Datapipe" /></a>
     </div>
     <div id="doc-navigation">
-      <a href='/'>Link</a>
-      <a href='/link' target='_blank'>Another Link</a>
+      
+      <% SETTINGS.links.each do |name,path| %>
+        <%= "<a href=#{path}>#{name}</a>" %>
+      <% end %>    
+
     </div>
     <div id="doc-content-wrapper">
       <div id="doc-content">
