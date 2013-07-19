@@ -1,5 +1,3 @@
-require 'kramdown'
-
 class DocumentationController < ApplicationController
   
   def index
